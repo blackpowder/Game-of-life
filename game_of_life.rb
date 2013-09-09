@@ -7,13 +7,15 @@ class Game_of_life
 	end
 
 	def new_generation
-		#files = File.open("game_of_life.doc", "w+")
-		#puts @f.each_line.to_a
-		#puts @f.split(//)
-		grid = []
+		
+		a = []
+		File.open('game_of_life.doc') do |f|
+		  f.lines.each do |line|
+		    a << line.split(//)
+		  end
+		end
 
-
-
+		puts a.inspect
 	end
 		
 
@@ -29,4 +31,3 @@ end
 
 
 
-	# to_do lire array 
