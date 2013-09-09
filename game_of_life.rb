@@ -1,6 +1,6 @@
 class Game_of_life
   def initialize
-    File.open("game_of_life.doc", "r") do |file|
+    File.open("game_of_life.txt", "r") do |file|
       @f = file.read
       puts @f
     end
@@ -8,7 +8,7 @@ class Game_of_life
 
   def new_generation
     a = []
-    File.open('game_of_life.doc') do |f|
+    File.open('game_of_life.txt') do |f|
       f.lines.each do |line|
         a << line.split(//)
       end
