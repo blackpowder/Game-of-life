@@ -1,0 +1,59 @@
+
+if 0 < 2 (live neighbourgh)       
+	0 == * (cell die)
+
+
+
+if 0 = 2 or 3 (live neighbourgh) 
+	0 == 0 (stay alive)
+
+
+
+if 0 > 3 (live neighbourgh) 
+	0 == * (cell die)
+
+
+
+
+ if * = 3 (live neighbourh)
+ 	* = 0  (become alive)
+
+
+
+
+
+a = [[0,0,0,*,*,0], [fjffj]]
+
+
+#each line split in array
+
+put array in array
+
+http://ruby-doc.org/core-2.0/String.html
+---------------
+
+grid = grid.new
+
+make new cell
+value and position
+
+
+
+
+
+
+
+
+
+require 'matrix'
+matrices = []
+
+
+
+
+
+
+for each number make a matrice (or rect.)
+
+
+http://rubydoc.info/gems/uzi-rect/0.0.3/frames
