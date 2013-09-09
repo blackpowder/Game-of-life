@@ -18,6 +18,7 @@ class Game_of_life
   end
 
   def start
+    #call next turn and save the outputs to a new file
     new_generation
   end
 
