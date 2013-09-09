@@ -1,32 +1,29 @@
 class Game_of_life
-	def initialize
-		File.open("game_of_life.doc", "r") do |file|
-		@f = file.read
-		puts @f
-		end
-	end
+  def initialize
+    File.open("game_of_life.doc", "r") do |file|
+      @f = file.read
+      puts @f
+    end
+  end
 
-	def new_generation
-		
-		a = []
-		File.open('game_of_life.doc') do |f|
-		  f.lines.each do |line|
-		    a << line.split(//)
-		  end
-		end
+  def new_generation
+    a = []
+    File.open('game_of_life.doc') do |f|
+      f.lines.each do |line|
+        a << line.split(//)
+      end
+    end
 
-		puts a.inspect
-	end
-		
+    puts a.inspect
+  end
 
-	def start
-	    new_generation
-	end
+  def start
+    new_generation
+  end
 end
 
-
-	mygame = Game_of_life.new
-	mygame.start
+mygame = Game_of_life.new
+mygame.start
 
 
 
