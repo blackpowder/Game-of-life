@@ -7,14 +7,12 @@ class Game_of_life
   end
 
   def new_generation
-    a = []
-    File.open('game_of_life.txt') do |f|
-      f.lines.each do |line|
-        a << line.split(//)
+    @board = []
+      @f.lines.each do |line|
+        @board << line.split(//)
       end
-    end
-
-    puts a.inspect
+  
+    puts @board.inspect
   end
 
   def start
