@@ -7,27 +7,33 @@ class Game_of_life
       puts @content
       @content.lines.each do |line|
         @board << line.split(//)
+
+
       end
     end
   end
 
   def start
     #call next turn and save the outputs to a new file
-    #new_board = next_turn(@board) #then save new_board to new_board.txt
+    new_board = next_turn(@board)
+    new_board
     puts @board.inspect
   end
 
   #create a new board with the updated values from one turn
-  def next_turn
+  def next_turn(board)
+
     #create a new board
-    #iterate over each cell in the board and calculate it's value by calling next_cell_value
+    next_cell_value(@x,@y) #iterate over each cell in the board and calculate it's value by calling next_cell_value
+    
+   
     #save the value in a new board variable at the same row, column
     #return new board
   end
 
   #calculate the next value for a particular cell
   def next_cell_value(x,y)
-    #get neighbours
+    neighbours(@x,@y)  #get neighbours
     #apply rules
     #return cell value
   end
@@ -40,7 +46,7 @@ class Game_of_life
     #if x,y is in the edge of a row it should 5
 
     #test it works for all four corners of the board
-
+    puts @board[3][4]  #wrote it, just to test, next time will work on this method
 
     #return an array with the values of the neighbouring cells, don't worry about the positions
     # e.g. [0,0,0] would be a corner cell with neighbours that are not alive
