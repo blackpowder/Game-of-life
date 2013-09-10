@@ -26,7 +26,9 @@ class Game_of_life
   def initialize
     @board = []
     File.open("starting_board.txt", "r") do |file|
-      file.read.lines.each do |line|
+      @content = file.read
+      puts @content
+      @content.lines.each do |line|
         @board << line.split(//)
       end
     end
