@@ -1,0 +1,84 @@
+
+if 0 < 2 (live neighbourgh)       
+	0 == * (cell die)
+
+
+
+if 0 = 2 or 3 (live neighbourgh) 
+	0 == 0 (stay alive)
+
+
+
+if 0 > 3 (live neighbourgh) 
+	0 == * (cell die)
+
+
+
+
+ if * = 3 (live neighbourh)
+ 	* = 0  (become alive)
+
+
+
+
+
+a = [[0,0,0,*,*,0], [fjffj]]
+
+
+#each line split in array
+
+put array in array
+
+http://ruby-doc.org/core-2.0/String.html
+---------------
+
+grid = grid.new
+
+make new cell
+value and position
+
+
+
+
+
+
+
+
+array[i-1][j-1]
+array[i-1][j]
+array[i-1][j+1]
+
+array[i][j-1]
+array[i][j+1]
+
+array[i+1][j-1]
+array[i+1][j]
+array[i+1][j+1]
+
+If you want to take your multi-dimensional array and present it as a visual representation of a two dimensional graph, this works nicely:
+
+x.each do |r|
+  puts r.map { |p| p }.join(" ")
+end
+Then you end with something like this in your terminal:
+
+  1 2 3
+  4 5 6
+  7 8 9
+
+
+
+
+
+require 'matrix'
+matrices = []
+
+
+
+
+
+
+for each number make a matrice (or rect.)
+
+
+http://rubydoc.info/gems/uzi-rect/0.0.3/frames
