@@ -20,6 +20,21 @@ class Game_of_life
     new_generation
   end
 
+  #create a new board with the updated values from one turn
+  def next_turn
+    #create a new board
+    #iterate over each cell in the board and calculate it's value by calling next_cell_value
+    #save the value in a new board variable at the same row, column
+    #return new board
+  end
+
+  #calculate the next value for a particular cell
+  def next_cell_value(x,y)
+    #get neighbours
+    #apply rules
+    #return cell value
+  end
+
   #return an array with the values of the cells neighbouring to the position x,y
   def neighbours(x,y)
 
@@ -29,19 +44,10 @@ class Game_of_life
 
     #test it works for all four corners of the board
 
-  end
 
-  #create a new board with the updated values from one turn
-  def next_turn
-    #iterate over each cell in the board and calculate it's value
-
-  end
-
-  #calculate the next value for a particular cell
-  def next_cell_value(x,y)
-    #get neighbours
-    #apply rules
-    #return cell value
+    #return an array with the values of the neighbouring cells, don't worry about the positions
+    # e.g. [0,0,0] would be a corner cell with neighbours that are not alive
+    # [0,*,0] would have one neighbour alive etc. - it doesn't matter which order or position each cell is in
   end
 end
 
