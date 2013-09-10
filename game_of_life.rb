@@ -1,6 +1,6 @@
 class Game_of_life
   def initialize
-    File.open("game_of_life.txt", "r") do |file|
+    File.open("starting_board.txt", "r") do |file|
       @f = file.read
       puts @f
     end
@@ -17,6 +17,7 @@ class Game_of_life
 
   def start
     #call next turn and save the outputs to a new file
+    #new_board = next_turn(@board) #then save new_board to new_board.txt
     new_generation
   end
 
