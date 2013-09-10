@@ -1,24 +1,41 @@
 class Game_of_life
-  def initialize
-    File.open("starting_board.txt", "r") do |file|
-      @f = file.read
-      puts @f
-    end
-  end
+#old code, delete once you understand the change
+#  def initialize
+#    File.open("starting_board.txt", "r") do |file|
+#      @f = file.read
+#      puts @f
+#    end
+#  end
+#
+#  def new_generation
+#    @board = []
+#      @f.lines.each do |line|
+#        @board << line.split(//)
+#      end
+#
+#    puts @board.inspect
+#  end
+#
+#  def start
+#    #call next turn and save the outputs to a new file
+#    #new_board = next_turn(@board) #then save new_board to new_board.txt
+#    new_generation
+#  end
 
-  def new_generation
+  #new code - see how it's shorter and clearer
+  def initialize
     @board = []
-      @f.lines.each do |line|
+    File.open("starting_board.txt", "r") do |file|
+      file.read.lines.each do |line|
         @board << line.split(//)
       end
-  
-    puts @board.inspect
+    end
   end
 
   def start
     #call next turn and save the outputs to a new file
     #new_board = next_turn(@board) #then save new_board to new_board.txt
-    new_generation
+    puts @board.inspect
   end
 
   #create a new board with the updated values from one turn
