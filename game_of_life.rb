@@ -25,31 +25,52 @@ class Game_of_life
 
     #iterate over each cell in the board and calculate it's value by calling next_cell_value
     board.each_with_index do |cells, row|
-      cells.each_with_index do |cell, column|
-        next_cell_value(row,column)
+      cells.each_with_index do
+       |cell, column|
+
+       @cell = cell
+       @row = row
+       @column = column  
+     
+       next_cell_value(row,column)
         #save the value in new_board variable at the same row, column
+
+       File.open("new_board.txt", "w+") do |f|    #to_do fix "w+"
+       f.write(@test)
+       end
+
+       @board.each do |new_cell|
+       @test = new_cell.map { |p| p }.join("")
+       end 
       end
     end
-
     #return new_board
   end
 
   #calculate the next value for a particular cell
   def next_cell_value(x,y)
     neighbours(@x,@y)  #get neighbours
+
     #apply rules
     #return cell value
   end
 
   #return an array with the values of the cells neighbouring to the position x,y
   def neighbours(x,y)
-    #@board.each_with_index { |item, index| puts "#{index} #{@board[1][1]}" }
+    x = @row
+    y = @column 
+   
+    puts "x = #{x} and y = #{y}"
 
-    @board.each_with_index do |item, index|  # i know it's not correct.. but testing different things
-      x = index
-      puts "#{x} #{@board[1][1]}"
-      puts @board[1][1]
-    end
+
+  
+
+
+
+  
+
+  
+
 
     #if x,y is in the middle of the board this should return 8 cells
     #if x,y is in a corner it should return 3

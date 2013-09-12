@@ -44,16 +44,15 @@ value and position
 
 
 
-array[i-1][j-1]
-array[i-1][j]
-array[i-1][j+1]
+@board[x-1][y]
+@board[x-1][y+1]
 
-array[i][j-1]
-array[i][j+1]
+@board[x][y-1]
+@board[x][y+1]
 
-array[i+1][j-1]
-array[i+1][j]
-array[i+1][j+1]
+@board[x+1][y-1]
+@board[x+1][y]
+@board[x+1][y+1]
 
 If you want to take your multi-dimensional array and present it as a visual representation of a two dimensional graph, this works nicely:
 
