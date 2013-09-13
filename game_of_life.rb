@@ -6,7 +6,7 @@ class Game_of_life
       @content = file.read
       puts @content
       @content.lines.each do |line|
-        @board << line.split(//)
+        @board << line.strip.split(//)
       end
     end
   end
@@ -16,26 +16,39 @@ class Game_of_life
     p @board
     new_board = next_turn(@board)
     p new_board
-    #todo save new board to a file called new_board.txt
+
+    File.open("new_board.txt", "w+") do |f|    #to_do fix "w+"
+      new_board.each do |row|
+        f.write row.join + "\n"
+      end
+    end
   end
 
   #create a new board with the updated values from one turn
   def next_turn(board)
-    return board
 
     #  #todo create a new board with the same dimensions as board
     #  #hint: google for dup method
-    #  #new_board = ...
+       new_board = @board.clone #dup ?
+
+
     #
     #  #iterate over each cell in the board and calculate it's value by calling next_cell_value
-    #  board.each_with_index do |cells, row|
-    #    cells.each_with_index do |cell, column|
-    #      #todo save the next cell value in new_board variable at the same row, column
-    #      next_cell_value(board,row,column)
-    #     end
-    #  end
-    #
-    # return new_board
+      board.each_with_index do |cells, row|
+        cells.each_with_index do |cell, column|
+
+          #todo save the next cell value in new_board variable at the same row, column          
+          new_board[row][column] = next_cell_value(board,row,column)
+           
+          #find the cell at row, column and set it's value to the the return value of the previous line  
+
+         end
+      end
+      puts ""
+      p new_board
+
+      puts ""
+     return new_board
   end
 
   def next_cell_value(board, row, column)
