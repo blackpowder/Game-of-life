@@ -26,33 +26,33 @@ class Game_of_life
 
   #create a new board with the updated values from one turn
   def next_turn(board)
+    new_board = @board.clone
 
-    #  #todo create a new board with the same dimensions as board
-    #  #hint: google for dup method
-       new_board = @board.clone #dup ?
-
-
-    #
-    #  #iterate over each cell in the board and calculate it's value by calling next_cell_value
-      board.each_with_index do |cells, row|
-        cells.each_with_index do |cell, column|
-
-          #todo save the next cell value in new_board variable at the same row, column          
-          new_board[row][column] = next_cell_value(board,row,column)
-           
-          #find the cell at row, column and set it's value to the the return value of the previous line  
-
-         end
+    #iterate over each cell in the board and calculate it's value by calling next_cell_value
+    board.each_with_index do |cells, row|
+      cells.each_with_index do |cell, column|
+        new_board[row][column] = next_cell_value(board, row, column)
       end
-      puts ""
-      p new_board
-
-      puts ""
-     return new_board
+    end
+    new_board
   end
 
   def next_cell_value(board, row, column)
     '0'
+    #todo get neighbours of current cell
+    neighbours = neighbours_of(board, row, column)
+
+    #todo calculate new cell value
+    #Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+    #Any live cell with two or three live neighbours lives on to the next generation.
+    #Any live cell with more than three live neighbours dies, as if by overcrowding.
+    #Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+  end
+
+  #return the neighbours of the cell at row, column
+  def neighbours_of(board, row, column)
+    #change the array returned to test the different calculations in next_cell_value
+    ['*','0','0']
   end
 end
 
