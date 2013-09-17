@@ -37,22 +37,80 @@ class Game_of_life
     new_board
   end
 
-  def next_cell_value(board, row, column)
-    '0'
-    #todo get neighbours of current cell
-    neighbours = neighbours_of(board, row, column)
 
-    #todo calculate new cell value
+  def next_cell_value(board, row, column)
+
     #Any live cell with fewer than two live neighbours dies, as if caused by under-population.
     #Any live cell with two or three live neighbours lives on to the next generation.
     #Any live cell with more than three live neighbours dies, as if by overcrowding.
     #Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+    neighbours = neighbours_of(board, row, column)
+    cell_value = board[row][column]
+
+    cell_alive = cell_value == "*"
+    cell_dead = cell_value == "0"
+
+    neighbours_alive = neighbours.count("*")
+    neighbours_dead = neighbours.count("0")
+
+    if cell_alive and (neighbours_dead < 2 or neighbours_alive > 3)
+      cell_value = "0"  
+    elsif cell_dead and neighbours_alive == 3
+      cell_value = "*"
+    end
+    cell_value
+
   end
 
   #return the neighbours of the cell at row, column
   def neighbours_of(board, row, column)
     #change the array returned to test the different calculations in next_cell_value
-    ['*','0','0']
+    ['*','*', "0", '0', "0"]
+
+    #find the width of the board
+    #find the length of the board
+    width = board[0].size
+    height = board.size
+
+
+    #generate co-ordinates for all the neighbours
+    #something like [[row-1, column-1],[row, column-1] etc...] - should be 8 in total
+    coordniates = [
+      [row - 1, column - 1],
+      [row - 1, column],
+      [row - 1, column + 1],
+
+      [row, column -1],
+      [row, column +1],
+
+      [row + 1, column - 1],
+      [row + 1, column],
+      [row + 1, column + 1],
+    ]
+
+    #filter out all the coordinates which are outside of the board boundary
+    
+
+    coordinates_oustside = row > 0 and row < height and (column > 0 and column < width)
+
+
+
+
+
+    #return the values of the cells at the cordinates
+
+
+
+  #  values = []
+   # coordinates.each do |coord|
+  #    values << board[coord[0],coord[1]]
+   # end
+   # values
+
+
+
+
   end
 end
 

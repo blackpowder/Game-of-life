@@ -7,6 +7,20 @@ if 0 < 2 (live neighbourgh)
 if 0 = 2 or 3 (live neighbourgh) 
 	0 == 0 (stay alive)
 
+if "#{cell_alive}" 
+      if neighbours_dead < 2
+        @new_board[row][column] = "0"
+      elsif neighbours_dead == 2 or 3
+        @new_board[row][column] = "*"
+      else neighbours_alive > 3
+        @new_board[row][column] = "0"       
+      end
+    else
+      if neighbours_alive == 3
+        @new_board[row][column] = "*"
+      end
+    end
+
 
 
 if 0 > 3 (live neighbourgh) 
