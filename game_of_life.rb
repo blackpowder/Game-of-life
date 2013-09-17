@@ -4,7 +4,6 @@ class Game_of_life
     @board = []
     File.open("starting_board.txt", "r") do |file|
       @content = file.read
-      puts @content
       @content.lines.each do |line|
         @board << line.strip.split(//)
       end
@@ -13,12 +12,20 @@ class Game_of_life
 
   #call next turn and save the outputs to a new file
   def start
-    p @board
+    puts `cat starting_board.txt`
     new_board = next_turn(@board)
-    p new_board
+    300.times do
+      save_board(new_board)
+      puts '========='
+      puts `cat new_board.txt`
+      sleep(0.1)
+      new_board = next_turn(new_board)
+    end
+  end
 
+  def save_board(board)
     File.open("new_board.txt", "w+") do |f|    #to_do fix "w+"
-      new_board.each do |row|
+      board.each do |row|
         f.write row.join + "\n"
       end
     end
@@ -26,7 +33,7 @@ class Game_of_life
 
   #create a new board with the updated values from one turn
   def next_turn(board)
-    new_board = @board.clone
+    new_board =  Array.new(board.size) {Array.new (board[0].size)}
 
     #iterate over each cell in the board and calculate it's value by calling next_cell_value
     board.each_with_index do |cells, row|
@@ -49,13 +56,13 @@ class Game_of_life
     cell_value = board[row][column]
 
     cell_alive = cell_value == "*"
-    cell_dead = cell_value == "0"
+    cell_dead = cell_value == "."
 
     neighbours_alive = neighbours.count("*")
-    neighbours_dead = neighbours.count("0")
+    neighbours_dead = neighbours.count(".")
 
-    if cell_alive and (neighbours_dead < 2 or neighbours_alive > 3)
-      cell_value = "0"  
+    if cell_alive and (neighbours_alive < 2 or neighbours_alive > 3)
+      cell_value = "."
     elsif cell_dead and neighbours_alive == 3
       cell_value = "*"
     end
@@ -65,18 +72,12 @@ class Game_of_life
 
   #return the neighbours of the cell at row, column
   def neighbours_of(board, row, column)
-    #change the array returned to test the different calculations in next_cell_value
-    ['*','*', "0", '0', "0"]
 
-    #find the width of the board
-    #find the length of the board
-    width = board[0].size
     height = board.size
-
+    width = board[0].size
 
     #generate co-ordinates for all the neighbours
-    #something like [[row-1, column-1],[row, column-1] etc...] - should be 8 in total
-    coordniates = [
+    coordinates = [
       [row - 1, column - 1],
       [row - 1, column],
       [row - 1, column + 1],
@@ -90,27 +91,14 @@ class Game_of_life
     ]
 
     #filter out all the coordinates which are outside of the board boundary
-    
+    coordinates_in_board = coordinates.select do |coords|
+      coords[0] >= 0 && coords[0] < height && coords[1] >= 0 && coords[1] < width
+    end
 
-    coordinates_oustside = row > 0 and row < height and (column > 0 and column < width)
-
-
-
-
-
-    #return the values of the cells at the cordinates
-
-
-
-  #  values = []
-   # coordinates.each do |coord|
-  #    values << board[coord[0],coord[1]]
-   # end
-   # values
-
-
-
-
+    #get the values at the neighbouring coordinates
+    coordinates_in_board.collect do |coords|
+      board[coords[0]][coords[1]]
+    end
   end
 end
 
